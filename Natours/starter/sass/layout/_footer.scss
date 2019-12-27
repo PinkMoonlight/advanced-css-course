@@ -5,20 +5,34 @@
         color: $color-grey-light-1;
         letter-spacing: .1rem;
 
+        @include respond(tab-port) {
+            padding: 8rem 0;
+        }
+
     &__logo-box {  //inline element
         text-align: center;
         margin-bottom: 8rem;
+
+        @include respond(tab-port) {
+            margin-bottom: 6rem;
+        }        
     }
 
     &__logo {
         width: 15rem;
         height: auto;
+
     }
 
     &__navigation {
         border-top: 1px solid $color-grey-dark;
         padding-top: 2rem;
-        display: inline-block; //shrinks line to match content elements width
+        display: inline-block; //shrinks the border line, to match content elements width
+
+        @include respond(tab-port) {
+            width: 100%;
+            text-align: center;
+        }
     }
 
     &__list {
@@ -61,6 +75,12 @@
 
         &--span {
             font-size: 1.29rem;
+        }
+
+        @include respond(tab-port) {
+            width: 100%;
+            float: none; 
+            text-align: center;
         }
     }
 
