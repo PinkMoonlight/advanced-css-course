@@ -24,13 +24,19 @@
         width: 15rem;
         height: 15rem;
         float: left;
-        // shape outside has to be used with float and width and height must be declared
-        -webkit-shape-outside: circle(50% at 50% 50%); //radius half the height and width of the element at x and y
-        shape-outside: circle(50% at 50% 50%); //radius half the height and width of the element at x and y
-        -webkit-clip-path: circle(50% at 50% 50%);
-        clip-path: circle(50% at 50% 50%);
         transform: translateX(-3rem) skewX(12deg);
         position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            // shape outside has to be used with float and width and height must be declared
+            -webkit-shape-outside: circle(50% at 50% 50%); //radius half the height and width of the element at x and y
+            shape-outside: circle(50% at 50% 50%); //radius half the height and width of the element at x and y
+            border-radius: none;
+        }
 
         @include respond(phone) {
             transform: translateX(-5rem) skewX(0);

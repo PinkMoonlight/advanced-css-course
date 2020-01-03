@@ -57,8 +57,11 @@
         z-index: 1500;
 
         opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
         width: 0;
         transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
     }
 
     &__list {
@@ -68,11 +71,16 @@
         transform: translate(-50%, -50%);
         list-style: none;
         text-align: center;
+
+        @include respond(phone) {
+            width: 100%;
+        }
     }
 
     &__item {
         margin: 1rem;
     }
+
     &__link {
         &:link,
         &:visited {
@@ -87,7 +95,7 @@
                                     transparent 0%,  
                                     transparent 50%, 
                                     $color-white 50%);
-            background-size: 220%;
+            background-size: 260%;
             transition: all .4s;
             
             span {
@@ -110,6 +118,7 @@
 
     &__checkbox:checked ~ &__nav   {
         opacity: 1;
+        visibility: visible;
         width: 100%;
     }
 
@@ -148,7 +157,7 @@
     }
 
     &__checkbox:checked + &__button &__icon {
-        background-color: transparent;  //do isn't removed from flow
+        background-color: transparent;  //so isn't removed from flow
     }
 
     &__checkbox:checked + &__button &__icon::before {
